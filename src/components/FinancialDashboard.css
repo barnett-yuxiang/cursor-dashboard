@@ -1,0 +1,29 @@
+.dashboard-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.charts-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+}
+
+.chart-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dashboard-title {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.chart-title {
+  color: #666;
+  margin-bottom: 15px;
+} 
