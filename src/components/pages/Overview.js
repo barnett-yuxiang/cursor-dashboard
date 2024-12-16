@@ -24,51 +24,57 @@ ChartJS.register(
 );
 
 const Overview = () => {
-  // Stock data
   const stockData = {
     labels: ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'FB'],
     values: [180, 2800, 340, 3400, 300],
   };
 
-  // Trend data
   const trendData = {
-    labels: ['2023-01-01', '2023-02-01', '2023-03-01', '2023-04-01', '2023-05-01'],
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
     datasets: [
       {
         label: 'AAPL',
         data: [150, 155, 148, 152, 160],
-        borderColor: 'rgba(99, 102, 241, 1)',
-        tension: 0.4,
+        borderColor: '#818cf8',
+        tension: 0.1,
+        borderWidth: 2,
+        pointRadius: 0,
       },
       {
         label: 'GOOGL',
         data: [2700, 2750, 2800, 2850, 2900],
-        borderColor: 'rgba(52, 211, 153, 1)',
-        tension: 0.4,
+        borderColor: '#34d399',
+        tension: 0.1,
+        borderWidth: 2,
+        pointRadius: 0,
       }
     ],
   };
 
   const barOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
-      },
-      title: {
         display: false,
       },
     },
     scales: {
       y: {
+        beginAtZero: true,
         grid: {
-          display: true,
-          color: 'rgba(0, 0, 0, 0.1)',
+          color: '#f3f4f6',
+        },
+        ticks: {
+          color: '#6b7280',
         },
       },
       x: {
         grid: {
           display: false,
+        },
+        ticks: {
+          color: '#6b7280',
         },
       },
     },
@@ -76,23 +82,33 @@ const Overview = () => {
 
   const lineOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: 'bottom',
-      },
-      title: {
-        display: false,
+        position: 'top',
+        align: 'end',
+        labels: {
+          boxWidth: 10,
+          usePointStyle: true,
+          pointStyle: 'circle',
+        },
       },
     },
     scales: {
       y: {
         grid: {
-          color: 'rgba(0, 0, 0, 0.1)',
+          color: '#f3f4f6',
+        },
+        ticks: {
+          color: '#6b7280',
         },
       },
       x: {
         grid: {
           display: false,
+        },
+        ticks: {
+          color: '#6b7280',
         },
       },
     },
@@ -104,23 +120,27 @@ const Overview = () => {
       <div className="charts-container">
         <div className="chart-box">
           <h2>Current Stock Prices</h2>
-          <Bar 
-            data={{
-              labels: stockData.labels,
-              datasets: [{
-                label: 'value',
-                data: stockData.values,
-                backgroundColor: 'rgba(99, 102, 241, 0.5)',
-                borderColor: 'rgba(99, 102, 241, 1)',
-                borderWidth: 1,
-              }]
-            }} 
-            options={barOptions}
-          />
+          <div style={{ height: '300px' }}>
+            <Bar 
+              data={{
+                labels: stockData.labels,
+                datasets: [{
+                  label: 'Stock Price',
+                  data: stockData.values,
+                  backgroundColor: '#818cf8',
+                  borderColor: '#818cf8',
+                  borderWidth: 1,
+                }]
+              }} 
+              options={barOptions}
+            />
+          </div>
         </div>
         <div className="chart-box">
           <h2>Stock Price Trends</h2>
-          <Line data={trendData} options={lineOptions} />
+          <div style={{ height: '300px' }}>
+            <Line data={trendData} options={lineOptions} />
+          </div>
         </div>
       </div>
     </div>
